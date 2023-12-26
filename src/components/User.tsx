@@ -1,21 +1,20 @@
-
+import {cookies, headers} from 'next/headers'
 
 export  async function User(){
-  const response = await fetch('https://api.github.com/users/HeitorBMarini', {
-    //cache : 'no-store' - a cada novs requisição, não fica cache de outro usuário
-    cache : 'no-store'
-})
+  const userCookies = cookies()
+  const userHeaders = headers()
 
-  const user = await response.json()
-
+  
 
   return(
     <div>
       <h1> User</h1>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
+      <pre>{JSON.stringify(userCookies.getAll(), null, 2)}</pre>
+      <pre>{JSON.stringify(userHeaders.entries(), null, 2)}</pre>
       
 
     </div>
       
   )
 }
+
