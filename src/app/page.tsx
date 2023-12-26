@@ -5,17 +5,25 @@ import { UserCount } from "@/components/UserCount";
 import Link from "next/link";
 import { Suspense } from "react";
 
+export const metadata = {
+  title : {
+    default: 'Vanguard',
+    template: '%s | Inbursa', //%s para poder receber string
+  }
+}
+
 export default function Home(){
   return(
     <div>
       <h1> Hello Vzap</h1>
+      <Link href='/auth/signin/'>Login</Link>
 
       <UserCount/>
       <Suspense fallback={<p> Carregando repositórios... </p>}>
 
       <Repos/>
 
-      
+     
 
       </Suspense>
 
